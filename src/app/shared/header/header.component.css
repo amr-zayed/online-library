@@ -1,0 +1,3 @@
+.header-route {
+  @apply cursor-pointer font-semibold text-lg;
+}
