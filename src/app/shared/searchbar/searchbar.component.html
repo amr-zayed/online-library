@@ -1,0 +1,60 @@
+<form class="flex w-full" (ngSubmit)="submitSearch()">
+  <div class="flex w-full h-11 relative">
+    <label
+      for="search-dropdown"
+      class="mb-2 text-sm font-medium text-gray-900 sr-only"
+      >Category</label
+    >
+    <button
+      id="dropdown-button"
+      (click)="toggleIsCategoriesOpened()"
+      data-dropdown-toggle="dropdown"
+      class="z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-50 border border-r-0 border-gray-300 rounded-s-full hover:bg-gray-200 focus:ring-1 focus:outline-none focus:ring-secondary-400"
+      type="button">
+      {{ selectedCategory ? selectedCategory : 'All categories' }}
+      <svg
+        class="w-2.5 h-2.5 ms-2.5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 10 6">
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m1 1 4 4 4-4" />
+      </svg>
+    </button>
+    <div
+      id="dropdown"
+      class="z-10 absolute w-36 top-14 bg-gray-50 divide-y divide-gray-100 rounded-l shadow"
+      [ngClass]="{ hidden: !isCategoriesOpened }">
+      <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdown-button">
+        <li *ngFor="let category of categories">
+          <button
+            type="button"
+            (click)="updateCategory(category)"
+            class="inline-flex w-full px-4 py-2 hover:bg-gray-100">
+            {{ category }}
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="relative w-full">
+      <input
+        type="search"
+        id="search-dropdown"
+        [(ngModel)]="searchQuery"
+        name="searchInput"
+        class="block p-2.5 w-full h-full z-20 text-sm text-te rounded-e-full border-s-2 border border-gray-300 focus:outline-none focus:border-secondary-400"
+        placeholder="Search"
+        required />
+      <button
+        type="submit"
+        class="absolute top-0 end-0 p-2.5 text-sm font-medium h-full text-gray-50 bg-secondary-500 rounded-e-full border border-secondary hover:bg-secondary-600 focus:ring-1 focus:outline-none focus:ring-secondary-400">
+        Search
+      </button>
+    </div>
+  </div>
+</form>
