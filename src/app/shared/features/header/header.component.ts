@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SearchbarComponent } from '../searchbar/searchbar.component';
+import { SearchbarComponent } from '../../ui/searchbar/searchbar.component';
 
 @Component({
   selector: 'app-header',
