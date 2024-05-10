@@ -1,0 +1,6 @@
+h2 {
+  @apply text-xl font-semibold font-nunito sm:text-2xl;
+}
+h3 {
+  @apply mb-2 text-text;
+}

@@ -4,6 +4,7 @@ import { environment } from '../../../environments/environment.development';
 import { Observable, catchError, of } from 'rxjs';
 import { SubjectsResp } from './../utils/respDataTypes';
 import { miniBook } from '../utils/dataTypes';
+import handleError from '../utils/functions';
 
 @Injectable({
   providedIn: 'root',
@@ -22,18 +23,6 @@ export class BooksService {
 
     return this.http
       .get<SubjectsResp>(booksBySubjectUrl, { headers })
-      .pipe(catchError(this.handleError('getBooksBySubject', null)));
-  }
-
-  private handleError<T>(operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
-      console.error(error); // log to console instead
-
-      // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
-
-      // Let the app keep running by returning an empty result.
-      return of(result as T);
-    };
+      .pipe(catchError(handleError('getBooksBySubject', null)));
   }
 }

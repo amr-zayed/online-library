@@ -26,7 +26,7 @@
     <div>
       <a
         *ngFor="let author of book.authors"
-        routerLink="/authors/{{ author.id }}"
+        routerLink="/authors/{{ author.name }}/{{ author.id }}"
         class="cursor-pointer text-sm font-bold font-nunito text-text text-center hover:text-secondary-400">
         {{ author.name }},
       </a>

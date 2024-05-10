@@ -1,1 +1,37 @@
-<p>author works!</p>
+<div class="flex flex-col items-center md:flex-row">
+  <img
+    src="{{ author?.image }}"
+    class="w-2/4 md:w-1/5 aspect-square rounded-full" />
+  <h1 class="text-5xl font-freeman my-7 md:text-8xl m-auto">
+    {{ author?.name }}
+  </h1>
+</div>
+<div class="flex">
+  <div class="w-2/4"></div>
+  <div>
+    <div class="flex justify-between">
+      <div>
+        <h2>Birth Date</h2>
+        <h3>{{ author?.birth_date }}</h3>
+      </div>
+      <div>
+        <h2>Work Count</h2>
+        <h3>{{ author?.work_count }}</h3>
+      </div>
+    </div>
+    <div>
+      <h2>Top Work of the Author</h2>
+      <h3>{{ author?.top_work }}</h3>
+    </div>
+    <div>
+      <h2 class="mb-2">Top Subjects of the Author</h2>
+      <div class="flex flex-wrap">
+        <h3
+          *ngFor="let subject of author?.top_subjects"
+          class="bg-slate-300 rounded-full px-3 py-1 mr-4">
+          {{ subject }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

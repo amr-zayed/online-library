@@ -1,3 +1,5 @@
+import { Author } from './dataTypes';
+
 export interface SubjectsResp {
   numFound: number;
   q: string;
@@ -13,4 +15,8 @@ export interface SubjectsResp {
     isbn: string[];
     oclc: string[];
   }[];
+}
+
+export interface AuthorArrResp {
+  docs: Author[];
 }
