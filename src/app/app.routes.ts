@@ -6,5 +6,5 @@ import { BookComponent } from './book/book.component';
 export const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'authors/:name/:id', component: AuthorComponent },
-  { path: 'books/:type/:id', component: BookComponent },
+  { path: 'books/:name/:type/:id', component: BookComponent },
 ];

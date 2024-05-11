@@ -3,6 +3,8 @@ export interface miniBook {
   title: string;
   cover_img: string;
   first_publish_year: number;
+  edition_count: number;
+  number_of_pages: number;
   authors: { name: string; id: string }[];
 }
 

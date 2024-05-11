@@ -17,6 +17,9 @@ module.exports = {
         background: '#ece9ee',
         text: '#777f82',
       },
+      minWidth: {
+        '1/2': '50%',
+      },
     },
   },
   plugins: [],

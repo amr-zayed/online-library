@@ -1,1 +1,40 @@
-<p>book works!</p>
+<div class="flex flex-col md:flex-row items-center md:items-start">
+  <img src="{{ book?.cover_img }}" class="w-2/3 md:w-1/3" />
+  <div class="w-full pl-0 md:w-2/3 md:pl-7">
+    <h1
+      class="text-2xl font-freeman my-7 text-center md:text-4xl m-auto md:text-start">
+      {{ book?.title }}
+    </h1>
+    <div class="w-full">
+      <div class="flex w-full mr-3">
+        <div class="w-1/2">
+          <h2>First Publish Year</h2>
+          <h3>{{ book?.first_publish_year }}</h3>
+        </div>
+        <div class="w-1/2">
+          <h2>Number of Pages</h2>
+          <h3>{{ book?.number_of_pages }}</h3>
+        </div>
+      </div>
+      <div class="flex w-full">
+        <div class="min-w-1/2 mr-3">
+          <h2>Author/s Names</h2>
+          <div class="flex flex-wrap">
+            <h3
+              *ngFor="let author of book?.authors"
+              class="bg-slate-300 rounded-full px-3 py-1 mr-4 text-nowrap">
+              {{ author.name }}
+            </h3>
+          </div>
+        </div>
+        <div>
+          <h2>Edition Count</h2>
+          <h3>{{ book?.edition_count }}</h3>
+        </div>
+      </div>
+    </div>
+    <button class="bg-secondary-500 text-gray-50 rounded-full w-full py-1 my-7">
+      Add/Remove Wishlist
+    </button>
+  </div>
+</div>

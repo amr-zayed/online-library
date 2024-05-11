@@ -1,0 +1,6 @@
+h2 {
+  @apply text-sm font-semibold font-nunito sm:text-xl;
+}
+h3 {
+  @apply mb-2 text-text text-sm sm:text-base;
+}
