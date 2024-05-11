@@ -12,8 +12,8 @@ import { RouterModule } from '@angular/router';
   styleUrl: './books-list.component.css',
 })
 export class BooksListComponent {
-  booksList: miniBook[] = [];
-  @Input() set _BooksList(books: miniBook[]) {
+  booksList: miniBook[] | null = [];
+  @Input() set _BooksList(books: miniBook[] | null) {
     this.booksList = books;
   }
 }

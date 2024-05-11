@@ -1,10 +1,16 @@
 <div class="flex flex-col md:flex-row items-center md:items-start">
-  <img src="{{ book?.cover_img }}" class="w-2/3 md:w-1/3" />
+  <a
+    class="w-2/3 md:w-1/3"
+    routerLink="/books/{{ book?.title }}/{{ book?.id }}">
+    <img src="{{ book?.cover_img }}" class="w-full" />
+  </a>
   <div class="w-full pl-0 md:w-2/3 md:pl-7">
-    <h1
-      class="text-2xl font-freeman my-7 text-center md:text-4xl m-auto md:text-start">
-      {{ book?.title }}
-    </h1>
+    <a routerLink="/books/{{ book?.title }}/{{ book?.id }}">
+      <h1
+        class="text-2xl font-freeman my-7 text-center md:text-4xl m-auto md:text-start">
+        {{ book?.title }}
+      </h1>
+    </a>
     <div class="w-full">
       <div class="flex w-full mr-3">
         <div class="w-1/2">
@@ -20,11 +26,12 @@
         <div class="min-w-1/2 mr-3">
           <h2>Author/s Names</h2>
           <div class="flex flex-wrap">
-            <h3
+            <a
               *ngFor="let author of book?.authors"
-              class="bg-slate-300 rounded-full px-3 py-1 mr-4 text-nowrap">
+              class="bg-slate-300 rounded-full px-3 py-1 mr-4 text-nowrap"
+              routerLink="/authors/{{ author.name }}/{{ author.id }}">
               {{ author.name }}
-            </h3>
+            </a>
           </div>
         </div>
         <div>

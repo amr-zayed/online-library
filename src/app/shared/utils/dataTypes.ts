@@ -17,3 +17,9 @@ export interface Author {
   top_subjects: string[];
   image: string;
 }
+
+export interface AuthorMini {
+  name: string;
+  key: string;
+  image: string;
+}

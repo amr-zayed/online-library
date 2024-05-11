@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BooksService } from '../shared/data-access/books.service';
 import { miniBook } from '../shared/utils/dataTypes';
 import { CommonModule } from '@angular/common';
@@ -7,7 +7,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-book',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './book.component.html',
   styleUrl: './book.component.css',
 })
@@ -26,8 +26,5 @@ export class BookComponent {
       .subscribe(bookResp =>
         bookResp !== null ? (this.book = bookResp) : null
       );
-    console.log(authorId);
-    console.log(idType);
-    console.log(name);
   }
 }

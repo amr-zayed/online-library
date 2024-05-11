@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-searchbar',
@@ -16,6 +18,25 @@ export class SearchbarComponent {
   clickedCategories: boolean = false;
   selectedCategory: string = 'Title';
 
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit() {
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe(e => {
+        if (e instanceof NavigationEnd) {
+          if (e.urlAfterRedirects.split('/').at(1) === 'search')
+            this.searchQuery = e.urlAfterRedirects.split('/').at(-1) as string;
+          this.selectedCategory = e.urlAfterRedirects
+            .split('/')
+            .at(-2) as string;
+        }
+      });
+  }
+
   toggleIsCategoriesOpened() {
     this.isCategoriesOpened = !this.isCategoriesOpened;
     this.clickedCategories = true;
@@ -26,8 +47,12 @@ export class SearchbarComponent {
   }
 
   submitSearch() {
-    console.log(this.selectedCategory);
-    console.log(this.searchQuery);
+    this.router.navigate(
+      [`search/${this.selectedCategory}/${this.searchQuery}`],
+      {
+        relativeTo: this.route,
+      }
+    );
   }
   @HostListener('document:click')
   clickout() {

@@ -1,0 +1,20 @@
+<h1 class="text-3xl font-freeman my-7 text-primary md:text-5xl m-auto">
+  {{ category }}: {{ query }}
+</h1>
+<app-books-list
+  *ngIf="category !== 'Author'"
+  [_BooksList]="booksList"></app-books-list>
+
+<div *ngIf="category === 'Author'" class="flex flex-wrap justify-between">
+  <div
+    *ngFor="let author of AuthorsList"
+    class="flex flex-col w-1/4 mx-5 my-8 items-center cursor-pointer"
+    routerLink="/authors/{{ author.name }}/{{ author.key }}">
+    <img
+      src="{{ author.image }}"
+      class="rounded-full w-full aspect-square mb-3" />
+    <h3 class="w-fit text-text font-bold font-nunito hover:text-secondary-400">
+      {{ author.name }}
+    </h3>
+  </div>
+</div>
