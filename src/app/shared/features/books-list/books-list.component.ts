@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
   styleUrl: './books-list.component.css',
 })
 export class BooksListComponent {
-  booksList: miniBook[] | null = [];
+  booksList: miniBook[] | null = null;
   @Input() set _BooksList(books: miniBook[] | null) {
     this.booksList = books;
   }

@@ -28,11 +28,12 @@ export class SearchbarComponent {
       .pipe(filter(e => e instanceof NavigationEnd))
       .subscribe(e => {
         if (e instanceof NavigationEnd) {
-          if (e.urlAfterRedirects.split('/').at(1) === 'search')
+          if (e.urlAfterRedirects.split('/').at(1) === 'search') {
             this.searchQuery = e.urlAfterRedirects.split('/').at(-1) as string;
-          this.selectedCategory = e.urlAfterRedirects
-            .split('/')
-            .at(-2) as string;
+            this.selectedCategory = e.urlAfterRedirects
+              .split('/')
+              .at(-2) as string;
+          }
         }
       });
   }

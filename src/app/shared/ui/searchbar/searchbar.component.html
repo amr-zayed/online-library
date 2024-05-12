@@ -1,5 +1,5 @@
-<form class="flex w-full" (ngSubmit)="submitSearch()">
-  <div class="flex w-full h-11 relative">
+<form class="flex max-w-5xl w-full" (ngSubmit)="submitSearch()">
+  <div class="flex w-full h-12 relative">
     <label
       for="search-dropdown"
       class="mb-2 text-sm font-medium text-gray-900 sr-only"
@@ -9,7 +9,7 @@
       id="dropdown-button"
       (click)="toggleIsCategoriesOpened()"
       data-dropdown-toggle="dropdown"
-      class="z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-50 border border-r-0 border-gray-300 rounded-s-full hover:bg-gray-200 focus:ring-1 focus:outline-none focus:ring-secondary-400"
+      class="z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-purple-100 border-none border-r-0 border-gray-300 rounded-s-full hover:bg-gray-200 focus:ring-1 focus:outline-none focus:ring-secondary-400"
       type="button">
       {{ selectedCategory ? selectedCategory : 'All categories' }}
       <svg
@@ -28,7 +28,7 @@
     </button>
     <div
       id="dropdown"
-      class="z-10 absolute w-36 top-14 bg-gray-50 divide-y divide-gray-100 rounded-l shadow"
+      class="z-10 absolute w-36 top-14 bg-gray-50 divide-y divide-gray-100 rounded shadow"
       [ngClass]="{ hidden: !isCategoriesOpened }">
       <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdown-button">
         <li *ngFor="let category of categories">
@@ -47,7 +47,7 @@
         id="search-dropdown"
         [(ngModel)]="searchQuery"
         name="searchInput"
-        class="block p-2.5 w-full h-full z-20 text-sm text-te rounded-e-full border-s-2 border border-gray-300 focus:outline-none focus:border-secondary-400"
+        class="block p-2.5 w-full h-full z-20 text-sm text-te rounded-e-full border-s-2 border bg-purple-100 border-none focus:outline-none focus:border-secondary-400"
         placeholder="Search"
         required />
       <button

@@ -1,11 +1,10 @@
 <div
+  *ngIf="booksList !== null; else bookListNull"
   [ngClass]="{
-    'flex w-full text-center': booksList === null || booksList.length === 0,
-    'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3':
-      booksList !== null && booksList.length > 0
+    'flex w-full text-center': booksList.length === 0,
+    'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3': booksList.length > 0
   }">
-  <ng-container
-    *ngIf="booksList !== null && booksList.length > 0; else elseBlock">
+  <ng-container *ngIf="booksList.length > 0; else elseBlock">
     <div
       *ngFor="let book of booksList"
       class="flex flex-col justify-start items-center pb-4">
@@ -19,14 +18,18 @@
             }}"
             class="w-full" />
         </a>
-        <div class="absolute mb-6">
+        <div
+          class="absolute mb-6 bg-primary bg-opacity-40 px-2 py-1 rounded-full">
           <a
-            class="cursor-pointer text-blue-700 underline"
+            class="cursor-pointer font-bold text-secondary-500 hover:text-secondary-400"
             routerLink="/books/{{ book.title }}/{{ book.id }}"
             >More</a
           >
           |
-          <a class="cursor-pointer text-blue-700 underline">Whishlist</a>
+          <a
+            class="cursor-pointer font-bold text-secondary-500 hover:text-secondary-400 shadow-sm"
+            >Whishlist</a
+          >
         </div>
       </div>
       <a
@@ -49,10 +52,17 @@
       </h3>
     </div>
   </ng-container>
-  <ng-template #elseBlock
-    ><div
+  <ng-template #elseBlock>
+    <div
       class="text-4xl font-freeman my-7 text-primary w-full justify-center sm:text-8xl m-auto">
       No Books to Display Here
-    </div></ng-template
-  >
+    </div>
+  </ng-template>
 </div>
+
+<ng-template #bookListNull>
+  <div
+    class="text-4xl font-freeman my-7 text-primary w-full text-center sm:text-8xl m-auto">
+    Loading
+  </div>
+</ng-template>

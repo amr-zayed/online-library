@@ -13,7 +13,7 @@ import { map } from 'rxjs/operators';
 export class BooksService {
   constructor(private http: HttpClient) {}
 
-  getBooksBySubject(subject: string): Observable<miniBook[] | null> {
+  getBooksBySubject(subject: string): Observable<miniBook[]> {
     const booksBySubjectUrl = `${environment.apiUrl}search.json?q=subject:${subject}&limit=15`;
     let headers = new HttpHeaders();
     headers = headers.set('Access-Control-Allow-Origin', '*');
@@ -25,7 +25,7 @@ export class BooksService {
     return this.http.get<SubjectsResp>(booksBySubjectUrl, { headers }).pipe(
       map(subjectsresponse => {
         const booksArrLen = subjectsresponse.docs.length;
-        let booksArr = [];
+        let booksArr: miniBook[] = [];
 
         for (let i = 0; i < booksArrLen; i += 1) {
           if (
@@ -40,11 +40,11 @@ export class BooksService {
         }
         return booksArr;
       }),
-      catchError(handleError('getBooksBySubject', null))
+      catchError(handleError('getBooksBySubject', []))
     );
   }
 
-  getBooksBytitle(query: string): Observable<miniBook[] | null> {
+  getBooksBytitle(query: string): Observable<miniBook[]> {
     const booksByTitleUrl = `${environment.apiUrl}search.json?q=title:${query}&limit=15`;
 
     let headers = new HttpHeaders();
@@ -72,7 +72,7 @@ export class BooksService {
         }
         return booksArr;
       }),
-      catchError(handleError('getBooksBytitleandID', null))
+      catchError(handleError('getBooksBytitleandID', []))
     );
   }
 

@@ -11,7 +11,7 @@ import { miniBook } from '../shared/utils/dataTypes';
   styleUrl: './landing.component.css',
 })
 export class LandingComponent {
-  financeBooks: miniBook[] = [];
+  financeBooks: miniBook[] | null = null;
   constructor(private booksServices: BooksService) {}
   ngOnInit(): void {
     this.booksServices.getBooksBySubject('finance').subscribe(books => {

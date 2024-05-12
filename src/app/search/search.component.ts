@@ -28,7 +28,7 @@ export class SearchComponent {
   ) {}
 
   AuthorsList: AuthorMini[] | null = [];
-  booksList: miniBook[] | null = [];
+  booksList: miniBook[] | null = null;
   category: string = '';
   query: string = '';
   ngOnInit() {
