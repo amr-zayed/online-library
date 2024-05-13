@@ -1,82 +1,18 @@
 {
   "wishlist": [
     {
-      "id": "isbn/9798648836891",
-      "cover_img": "https://covers.openlibrary.org/b/id/756095-M.jpg",
-      "first_publish_year": 1880,
-      "title": "The art of money getting, or, Golden rules for money getting",
+      "id": "isbn/9780471448846",
+      "cover_img": "https://covers.openlibrary.org/b/id/1241487-M.jpg",
+      "first_publish_year": 1987,
+      "title": "Accounting Principles",
       "authors": [
         {
-          "name": "P. T. Barnum",
-          "id": "OL78901A"
+          "name": "Jerry J. Weygandt",
+          "id": "OL225203A"
         }
       ],
-      "edition_count": 145,
-      "number_of_pages": 64
-    },
-    {
-      "id": "isbn/9781906659875",
-      "cover_img": "https://covers.openlibrary.org/b/id/12816911-M.jpg",
-      "first_publish_year": 1776,
-      "title": "The Wealth of Nations",
-      "authors": [
-        {
-          "name": "Adam Smith",
-          "id": "OL39302A"
-        }
-      ],
-      "edition_count": 123,
-      "number_of_pages": 570
-    },
-    {
-      "id": "isbn/9781638230854",
-      "cover_img": "https://covers.openlibrary.org/b/id/14542536-M.jpg",
-      "first_publish_year": 1937,
-      "title": "Think and Grow Rich",
-      "authors": [
-        {
-          "name": "Napoleon Hill",
-          "id": "OL37117A"
-        },
-        {
-          "name": "Napoleon Hill",
-          "id": "OL9472602A"
-        },
-        {
-          "name": "Napolean Hill",
-          "id": "OL10892785A"
-        }
-      ],
-      "edition_count": 276,
-      "number_of_pages": 256
-    },
-    {
-      "id": "isbn/1929194196",
-      "cover_img": "https://covers.openlibrary.org/b/id/671290-M.jpg",
-      "first_publish_year": 1910,
-      "title": "The Art of War",
-      "authors": [
-        {
-          "name": "Sun Tzu",
-          "id": "OL30553A"
-        }
-      ],
-      "edition_count": 155,
-      "number_of_pages": 186
-    },
-    {
-      "id": "isbn/047172694X",
-      "cover_img": "https://covers.openlibrary.org/b/id/304562-M.jpg",
-      "first_publish_year": 1998,
-      "title": "Financial Accounting",
-      "authors": [
-        {
-          "name": "Paul D. Kimmel",
-          "id": "OL402967A"
-        }
-      ],
-      "edition_count": 65,
-      "number_of_pages": 832
+      "edition_count": 79,
+      "number_of_pages": 811
     }
   ]
 }
