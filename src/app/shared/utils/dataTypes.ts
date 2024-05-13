@@ -23,3 +23,9 @@ export interface AuthorMini {
   key: string;
   image: string;
 }
+
+export interface BookRouter {
+  name: string;
+  id: string;
+  idType: 'isbn' | 'lccn';
+}

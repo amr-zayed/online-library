@@ -42,7 +42,7 @@ export class SearchComponent {
     const categoryUrl = this.route.snapshot.paramMap.get('category') as string;
     const queryUrl = this.route.snapshot.paramMap.get('query') as string;
     this.category = categoryUrl;
-    this.query = queryUrl;
+    this.query = decodeURI(queryUrl);
     if (categoryUrl === 'Title') {
       this.booksServices
         .getBooksBytitle(queryUrl)
