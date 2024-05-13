@@ -1,18 +1,3 @@
 {
-  "wishlist": [
-    {
-      "id": "isbn/9780471448846",
-      "cover_img": "https://covers.openlibrary.org/b/id/1241487-M.jpg",
-      "first_publish_year": 1987,
-      "title": "Accounting Principles",
-      "authors": [
-        {
-          "name": "Jerry J. Weygandt",
-          "id": "OL225203A"
-        }
-      ],
-      "edition_count": 79,
-      "number_of_pages": 811
-    }
-  ]
+  "wishlist": []
 }

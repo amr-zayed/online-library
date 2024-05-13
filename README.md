@@ -2,13 +2,23 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.1.
 
-## Development server
+## Backend
+
+This projects is my take on the frontend of this [Open Library API](https://openlibrary.org/developers/api)
+
+## Starting Development server
+
+Run `npm i`
 
 Run `ng serve --open` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+Run `json-server --watch src/app/shared/utils/wishlist.json` to enable the wishlist feature. the wishlst feature was implemented using a mock up server because there was no apis available to create wishlist for the user.
+
+Sometimes you might face CORS issues. To resolve it, install [this](https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?hl=en) extension and TOGGLE IT ON
+
 ## Tools
 
-In this proejct, I used Tailwind for styling my components, Eslint for standardized coding and prettier to automatically format the code on saving file
+In this proejct, I used Tailwind for styling my components, Eslint for standardized coding and prettier to automatically format the code on saving files
 
 ## Files Structure
 
