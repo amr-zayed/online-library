@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BooksService } from '../../data-access/books.service';
 import { miniBook } from '../../utils/dataTypes';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { WishlistcService } from './../../data-access/wishlistc.service';
 
 @Component({
   selector: 'app-books-list',
@@ -15,5 +16,18 @@ export class BooksListComponent {
   booksList: miniBook[] | null = null;
   @Input() set _BooksList(books: miniBook[] | null) {
     this.booksList = books;
+  }
+
+  @Input() IsWishlist: boolean = false;
+  @Output() onWishlistRemove: EventEmitter<miniBook> = new EventEmitter();
+
+  constructor(private wishlistServices: WishlistcService) {}
+
+  removeFromWishlist(book: miniBook) {
+    this.onWishlistRemove.emit(book);
+  }
+
+  WishlistAddRemove(book: miniBook) {
+    this.wishlistServices.WishlistBookremoveOrAdd(book).subscribe();
   }
 }

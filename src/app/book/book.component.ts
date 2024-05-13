@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BooksService } from '../shared/data-access/books.service';
-import { BookRouter, miniBook } from '../shared/utils/dataTypes';
+import { miniBook } from '../shared/utils/dataTypes';
 import { CommonModule } from '@angular/common';
 import { WishlistcService } from '../shared/data-access/wishlistc.service';
 
@@ -19,17 +19,11 @@ export class BookComponent {
     private booksServices: BooksService,
     private wishlistServices: WishlistcService
   ) {}
-  bookRouter: BookRouter;
   ngOnInit() {
     const name = this.route.snapshot.paramMap.get('name') as string;
     const bookId = this.route.snapshot.paramMap.get('id') as string;
     const idType = this.route.snapshot.paramMap.get('type') as 'isbn' | 'lccn';
 
-    this.bookRouter = {
-      name: name,
-      id: bookId,
-      idType: idType,
-    };
     this.booksServices
       .getBookBytitleAndId(name, bookId, idType)
       .subscribe(bookResp =>
@@ -38,6 +32,7 @@ export class BookComponent {
   }
 
   AddRemoveFromWhishlist() {
-    this.wishlistServices.WishlistBookremoveOrAdd(this.bookRouter).subscribe();
+    if (this.book)
+      this.wishlistServices.WishlistBookremoveOrAdd(this.book).subscribe();
   }
 }

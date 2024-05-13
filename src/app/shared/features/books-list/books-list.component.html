@@ -19,7 +19,8 @@
             class="w-full" />
         </a>
         <div
-          class="absolute mb-6 bg-primary bg-opacity-40 px-2 py-1 rounded-full">
+          class="absolute mb-6 bg-primary bg-opacity-40 px-2 py-1 rounded-full"
+          *ngIf="!IsWishlist; else wishlistButt">
           <a
             class="cursor-pointer font-bold text-secondary-500 hover:text-secondary-400"
             routerLink="/books/{{ book.title }}/{{ book.id }}"
@@ -27,10 +28,18 @@
           >
           |
           <a
+            (click)="WishlistAddRemove(book)"
             class="cursor-pointer font-bold text-secondary-500 hover:text-secondary-400 shadow-sm"
             >Whishlist</a
           >
         </div>
+        <ng-template #wishlistButt>
+          <button
+            (click)="removeFromWishlist(book)"
+            class="absolute mb-6 cursor-pointer font-bold text-secondary-500 shadow-sm bg-primary bg-opacity-40 px-2 py-1 rounded-full hover:text-secondary-400 hover:bg-opacity-80">
+            Remove from wishlist
+          </button>
+        </ng-template>
       </div>
       <a
         routerLink="/books/{{ book?.title }}/{{ book?.id }}"
@@ -66,3 +75,5 @@
     Loading
   </div>
 </ng-template>
+
+<div class="absolute self-end">Added to Classes</div>

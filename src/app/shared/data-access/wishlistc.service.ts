@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BookRouter } from '../utils/dataTypes';
+import { BookRouter, miniBook } from '../utils/dataTypes';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
-import { Observable, map } from 'rxjs';
+import { Observable, map, switchMap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,33 +12,35 @@ export class WishlistcService {
 
   constructor(private http: HttpClient) {}
 
-  WishlistBookremoveOrAdd(book: BookRouter): Observable<any> {
+  WishlistBookremoveOrAdd(book: miniBook): Observable<boolean> {
     return this.http
       .get<BookRouter[]>(`${environment.mockServer}wishlist`)
       .pipe(
-        map(wishlist => {
+        switchMap(wishlist => {
           let tempWishlist = wishlist.filter(
             wishBook => wishBook.id === book.id
           );
 
           if (tempWishlist.length === 0) {
-            this.http
+            return this.http
               .post(`${environment.mockServer}wishlist`, JSON.stringify(book), {
                 headers: {
                   'Content-Type': 'application/json',
                 },
               })
-              .subscribe();
+              .pipe(map(_ => true));
           } else {
-            this.http
-              .delete(`${environment.mockServer}wishlist/${book.id}`)
-              .subscribe();
+            return this.http
+              .delete(
+                `${environment.mockServer}wishlist/${encodeURIComponent(book.id)}`
+              )
+              .pipe(map(_ => false));
           }
         })
       );
   }
 
   getWishlist() {
-    return this.http.get<BookRouter[]>(`${environment.mockServer}wishlist`);
+    return this.http.get<miniBook[]>(`${environment.mockServer}wishlist`);
   }
 }
