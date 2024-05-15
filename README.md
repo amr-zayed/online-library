@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This projects is my take on the frontend of this [Open Library API](https://openlibrary.org/developers/api)
 
-## Starting Development server
+## Starting Development Server
 
 Run `npm i`
 
