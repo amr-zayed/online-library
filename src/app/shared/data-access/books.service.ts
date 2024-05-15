@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { SubjectsResp, SubjectsRespDoc } from './../utils/respDataTypes';
 import { miniBook } from '../utils/dataTypes';
 import handleError from '../utils/functions';
@@ -21,11 +21,12 @@ export class BooksService {
       'Access-Control-Allow-Methods',
       'GET,POST,OPTIONS,DELETE,PUT'
     );
+    headers = headers.set('responseType', 'text');
 
     return this.http.get<SubjectsResp>(booksBySubjectUrl, { headers }).pipe(
       map(subjectsresponse => {
         const booksArrLen = subjectsresponse.docs.length;
-        let booksArr: miniBook[] = [];
+        const booksArr: miniBook[] = [];
 
         for (let i = 0; i < booksArrLen; i += 1) {
           if (
@@ -53,11 +54,12 @@ export class BooksService {
       'Access-Control-Allow-Methods',
       'GET,POST,OPTIONS,DELETE,PUT'
     );
+    headers = headers.set('responseType', 'text');
 
     return this.http.get<SubjectsResp>(booksByTitleUrl, { headers }).pipe(
       map(subjectsresponse => {
         const booksArrLen = subjectsresponse.docs.length;
-        let booksArr = [];
+        const booksArr = [];
 
         for (let i = 0; i < booksArrLen; i += 1) {
           if (
@@ -88,6 +90,7 @@ export class BooksService {
       'Access-Control-Allow-Methods',
       'GET,POST,OPTIONS,DELETE,PUT'
     );
+    headers = headers.set('responseType', 'text');
 
     return this.http.get<SubjectsResp>(bookByTitleUrl, { headers }).pipe(
       map(books => {
@@ -104,7 +107,7 @@ export class BooksService {
   }
 
   private parsebook(book: SubjectsRespDoc) {
-    let names: { name: string; id: string }[] = [];
+    const names: { name: string; id: string }[] = [];
     for (let i = 0; i < book.author_name.length; i += 1) {
       names.push({ name: book.author_name[i], id: book.author_key[i] });
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { BooksService } from '../shared/data-access/books.service';
 import { miniBook } from '../shared/utils/dataTypes';
@@ -12,7 +12,7 @@ import { WishlistcService } from '../shared/data-access/wishlistc.service';
   templateUrl: './book.component.html',
   styleUrl: './book.component.css',
 })
-export class BookComponent {
+export class BookComponent implements OnInit {
   book: miniBook | null = null;
   constructor(
     private route: ActivatedRoute,

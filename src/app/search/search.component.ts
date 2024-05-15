@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './search.component.html',
   styleUrl: './search.component.css',
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -35,7 +35,7 @@ export class SearchComponent {
     this.search();
     this.router.events
       .pipe(filter(e => e instanceof NavigationEnd))
-      .subscribe(_ => this.search());
+      .subscribe(() => this.search());
   }
 
   private search() {

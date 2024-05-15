@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
@@ -11,7 +11,7 @@ import { filter } from 'rxjs';
   templateUrl: './searchbar.component.html',
   styleUrl: './searchbar.component.css',
 })
-export class SearchbarComponent {
+export class SearchbarComponent implements OnInit {
   categories = ['Title', 'Subject', 'Author'];
   isCategoriesOpened: boolean = false;
   searchQuery: string = '';

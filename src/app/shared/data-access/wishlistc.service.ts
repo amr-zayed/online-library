@@ -17,7 +17,7 @@ export class WishlistcService {
       .get<BookRouter[]>(`${environment.mockServer}wishlist`)
       .pipe(
         switchMap(wishlist => {
-          let tempWishlist = wishlist.filter(
+          const tempWishlist = wishlist.filter(
             wishBook => wishBook.id === book.id
           );
 
@@ -28,13 +28,13 @@ export class WishlistcService {
                   'Content-Type': 'application/json',
                 },
               })
-              .pipe(map(_ => true));
+              .pipe(map(() => true));
           } else {
             return this.http
               .delete(
                 `${environment.mockServer}wishlist/${encodeURIComponent(book.id)}`
               )
-              .pipe(map(_ => false));
+              .pipe(map(() => false));
           }
         })
       );

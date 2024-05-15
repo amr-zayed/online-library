@@ -21,12 +21,13 @@ export class AuthorService {
       'Access-Control-Allow-Methods',
       'GET,POST,OPTIONS,DELETE,PUT'
     );
+    headers = headers.set('responseType', 'text');
 
     return this.http.get<AuthorArrResp>(authorByIdUrl, { headers }).pipe(
       map(authors => {
         for (let i = 0; i < authors.docs.length; i += 1) {
           if (id === authors.docs[i].key) {
-            let tempAuth: Author = authors.docs[i];
+            const tempAuth: Author = authors.docs[i];
             tempAuth.image = `https://covers.openlibrary.org/a/olid/${tempAuth.key}-L.jpg`;
             return tempAuth;
           }
@@ -46,11 +47,12 @@ export class AuthorService {
       'Access-Control-Allow-Methods',
       'GET,POST,OPTIONS,DELETE,PUT'
     );
+    headers = headers.set('responseType', 'text');
 
     return this.http.get<AuthorSearchResp>(authorsByNameUrl, { headers }).pipe(
       map(AuthorsResponse => {
         const AuthorsArrLen = AuthorsResponse.docs.length;
-        let AuthorsArr: AuthorMini[] = [];
+        const AuthorsArr: AuthorMini[] = [];
         for (let i = 0; i < AuthorsArrLen; i += 1) {
           AuthorsArr.push({
             name: AuthorsResponse.docs[i].author_name[0],

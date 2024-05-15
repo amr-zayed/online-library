@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WishlistcService } from '../shared/data-access/wishlistc.service';
 import { miniBook } from '../shared/utils/dataTypes';
 import { BooksListComponent } from '../shared/features/books-list/books-list.component';
@@ -10,7 +10,7 @@ import { BooksListComponent } from '../shared/features/books-list/books-list.com
   templateUrl: './wishlist.component.html',
   styleUrl: './wishlist.component.css',
 })
-export class WishlistComponent {
+export class WishlistComponent implements OnInit {
   wishlistBooks: miniBook[] | null = null;
   constructor(private wishlistServices: WishlistcService) {}
   ngOnInit() {
@@ -20,7 +20,7 @@ export class WishlistComponent {
   }
 
   handleWishlisht(book: miniBook) {
-    this.wishlistServices.WishlistBookremoveOrAdd(book).subscribe(_ => {
+    this.wishlistServices.WishlistBookremoveOrAdd(book).subscribe(() => {
       this.wishlistServices.getWishlist().subscribe(wishlist => {
         this.wishlistBooks = wishlist;
       });

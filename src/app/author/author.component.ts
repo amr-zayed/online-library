@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthorService } from './../shared/data-access/author.service';
 import { Author } from '../shared/utils/dataTypes';
@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './author.component.html',
   styleUrl: './author.component.css',
 })
-export class AuthorComponent {
+export class AuthorComponent implements OnInit {
   author: Author | null = null;
   constructor(
     private route: ActivatedRoute,
